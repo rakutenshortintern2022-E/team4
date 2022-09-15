@@ -80,25 +80,34 @@ def handle_message(event):
 
     # sended_text = transralte_lang(sended_text,"JA","EN")
     if diary_mode_flag == 1:
-        # line_bot_api.reply_message(
-        #         event.reply_token,
-        #         TextSendMessage(text="create figure"))
-        received_text = transralte_lang(received_text, "JA", "EN")
+        if "That was a fun hackathon." in received_text:
+            diary_mode_flag = 0
 
-        # request = requests.get("https://aws.random.cat/meow")
-        request = requests.get("https://dog.ceo/api/breeds/image/random")
-        # request = requests.get("https://joeschmoe.io/api/v1/random")
-        request = request.json()
+            image_url = "/img/webhook_url.png"
+            # line_bot_api.push_message(user_id, TextSendMessage(text="Image creating"))
+            line_bot_api.push_message(user_id, ImageSendMessage(original_content_url=image_url, preview_image_url=image_url))
 
-        # print(request)
+            message = "Is this the kind of image you have?"
+        else :
+            # line_bot_api.reply_message(
+            #         event.reply_token,
+            #         TextSendMessage(text="create figure"))
+            received_text = transralte_lang(received_text, "JA", "EN")
 
-        image_url = request['message']
+            # request = requests.get("https://aws.random.cat/meow")
+            request = requests.get("https://dog.ceo/api/breeds/image/random")
+            # request = requests.get("https://joeschmoe.io/api/v1/random")
+            request = request.json()
 
-        diary_mode_flag = 0
-        # line_bot_api.push_message(user_id, TextSendMessage(text="Image creating"))
-        line_bot_api.push_message(user_id, ImageSendMessage(original_content_url=image_url, preview_image_url=image_url))
+            # print(request)
 
-        message = "But that doesn't matter, look at my friends!"
+            image_url = request['message']
+
+            diary_mode_flag = 0
+            # line_bot_api.push_message(user_id, TextSendMessage(text="Image creating"))
+            line_bot_api.push_message(user_id, ImageSendMessage(original_content_url=image_url, preview_image_url=image_url))
+
+            message = "But that doesn't matter, look at my friends!"
 
         cur = con.cursor()
         # reset flag
