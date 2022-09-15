@@ -83,7 +83,7 @@ def handle_message(event):
         if "That was a fun hackathon." in received_text:
             diary_mode_flag = 0
 
-            image_url = "/img/webhook_url.png"
+            image_url = "/img/stable-diffusion-test.png"
             # line_bot_api.push_message(user_id, TextSendMessage(text="Image creating"))
             line_bot_api.push_message(user_id, ImageSendMessage(original_content_url=image_url, preview_image_url=image_url))
 
