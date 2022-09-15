@@ -83,7 +83,7 @@ def handle_message(event):
         if "That was a fun hackathon." in received_text:
             diary_mode_flag = 0
 
-            image_url = "/img/stable-diffusion-test.png"
+            image_url = "https://drive.google.com/file/d/1pdPJoGe0YdfQKJt7rkfdQd5Sikvpj_l5/view?usp=sharing"
             # line_bot_api.push_message(user_id, TextSendMessage(text="Image creating"))
             line_bot_api.push_message(user_id, ImageSendMessage(original_content_url=image_url, preview_image_url=image_url))
 
@@ -342,5 +342,8 @@ if __name__ == "__main__":
     # request = request.json()
 
     # print(request['message'])
+
+    # request = requests.get("https://icanhazdadjoke.com/", {"Accept": "text/plain"})
+    # print(request)
 
     con.close()
