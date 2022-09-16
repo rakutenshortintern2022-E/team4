@@ -27,10 +27,10 @@ handler = WebhookHandler(os.environ['YOUR_CHANNEL_SECRET'])
 
 # noby
 ENDPOINT = "https://www.cotogoto.ai/webapi/noby.json"
-API_KEY_noby = '313fbe3c3dd8381b9e26a3a3bc36d51d'
+API_KEY_noby = 'your key'
 
 #deepl
-API_KEY_dl = '0210a084-8bd5-b5cb-af38-e2f2bbfb9a2a:fx' # 自身の API キーを指定
+API_KEY_dl = 'your key' # 自身の API キーを指定
 
 @app.route("/")
 def test():
